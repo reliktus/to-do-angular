@@ -1,4 +1,5 @@
 <div>
+
   <div class="container">
     <app-add-task (emitTask)="add($event)"></app-add-task>
   </div>
@@ -10,8 +11,13 @@
     </div>
 
     <div>
-      <app-done-task [doneList]="doneList"> </app-done-task>
+      <app-done-task [doneList]="doneList"></app-done-task>
     </div>
 
   </div>
+
+  <div class="container">
+    <app-copyright></app-copyright>
+  </div>
+
 </div>

@@ -7,9 +7,9 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
   taskList: Array<string> = [];
   doneList: Array<string> = [];
+
   add(task: string) {
     if (task !== '' && task !== undefined) {
       this.taskList.push(task);
