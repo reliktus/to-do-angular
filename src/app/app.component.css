@@ -1,3 +1,9 @@
-.container{
-  display: flex; justify-content: space-around;
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.added {
+  color: green;
+  font-weight: bolder;
 }

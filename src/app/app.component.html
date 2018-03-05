@@ -1,23 +1,26 @@
-<div>
-
-  <div class="container">
-    <app-add-task (emitTask)="add($event)"></app-add-task>
-  </div>
-
-  <div class="container">
-
-    <div>
-      <app-todo-task [taskList]="taskList" (emitDone)="done($event)" (removeEmit)="remove($event)"></app-todo-task>
-    </div>
-
-    <div>
-      <app-done-task [doneList]="doneList"></app-done-task>
-    </div>
-
-  </div>
-
-  <div class="container">
-    <app-copyright></app-copyright>
-  </div>
-
+<div class="container">
+  Aplikacja TO-DO Angular
 </div>
+
+<div class="container">
+  <div>
+    <p>
+      <input [ngClass]="inputClass" [(ngModel)]="newTask" title="Dodaj zadanie" placeholder="Podaj nazwę zadania..">
+      <button (click)="addTask()">Dodaj zadanie</button>
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <div>
+    <p> Lista zadań: </p>
+    <ul *ngFor="let task of tasksList">
+      <li>{{task}}</li>
+    </ul>
+  </div>
+
+  <div>
+    <p> Zadania wykonane:</p>
+  </div>
+</div>
+

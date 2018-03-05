@@ -1,5 +1,4 @@
-import {Component} from '@angular/core';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,21 +6,24 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  taskList: Array<string> = [];
-  doneList: Array<string> = [];
+  newTask = '';
+  tasksList: Array<string> = [];
+  inputClass = '';
+  // doneTask: Array<string> = [];
 
-  add(task: string) {
-    if (task !== '' && task !== undefined) {
-      this.taskList.push(task);
+  addTask() {
+    let _this = this;
+    if (this.newTask !== '') {
+      this.tasksList.push(this.newTask);
+      this.inputClass = 'added';
+      this.newTask = 'Zadanie dodane !';
+      console.log(this.tasksList);
+      setTimeout(function () {
+        console.log('time out');
+        _this.newTask = '';
+        _this.inputClass = '';
+      }, 1000);
     }
   }
 
-  remove(task: string) {
-    this.taskList = this.taskList.filter(e => e !== task);
-  }
-
-  done(task: string) {
-    this.doneList.push(task);
-    this.remove(task);
-  }
 }
