@@ -13,14 +13,25 @@
 
 <div class="container">
   <div>
+    <!-- TODO Information when there is no task ng-container -->
     <p> Lista zadań: </p>
-    <ul *ngFor="let task of tasksList">
-      <li>{{task}}</li>
+    <ul *ngFor="let task of tasksList; let idx = index">
+      <li>
+        {{idx + 1}} {{task}}
+        <button title="remove" (click)="removeTask(idx)">Usun</button>
+        <button title="done" (click)="doneTask(idx)">Zrobione</button>
+      </li>
     </ul>
   </div>
 
   <div>
     <p> Zadania wykonane:</p>
+    <!-- TODO number of done task-->
+    <ul *ngFor="let task of doneTaskList; let idx = index">
+      <li>
+        {{task}}
+        <button title="resolve" (click)="resolveTask(idx)">Przywróc</button>
+      </li>
+    </ul>
   </div>
 </div>
-

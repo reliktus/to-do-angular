@@ -9,21 +9,34 @@ export class AppComponent {
   newTask = '';
   tasksList: Array<string> = [];
   inputClass = '';
-  // doneTask: Array<string> = [];
+  doneTaskList: Array<string> = [];
+
+  static removeTask(id: number, listType: Array<string>): void {
+    listType.splice(id, 1);
+  }
 
   addTask() {
-    let _this = this;
+    // let _this = this;
     if (this.newTask !== '') {
       this.tasksList.push(this.newTask);
       this.inputClass = 'added';
       this.newTask = 'Zadanie dodane !';
       console.log(this.tasksList);
-      setTimeout(function () {
-        console.log('time out');
-        _this.newTask = '';
-        _this.inputClass = '';
-      }, 1000);
+      // setTimeout(function () {
+      //   console.log('time out');
+      //   _this.newTask = '';
+      //   _this.inputClass = '';
+      // }, 1000);
     }
   }
 
+  doneTask(id: number): void {
+    this.doneTaskList.push(this.tasksList[id]);
+    AppComponent.removeTask(id, this.tasksList);
+  }
+
+  resolveTask(id: number): void {
+    this.tasksList.push(this.doneTaskList[id]);
+    AppComponent.removeTask(id, this.doneTaskList);
+  }
 }
