@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   Aplikacja TO-DO Angular
 </div>
 
@@ -12,26 +12,33 @@
 </div>
 
 <div class="container">
-  <div>
-    <!-- TODO Information when there is no task ng-container -->
-    <p> Lista zadań: </p>
-    <ul *ngFor="let task of tasksList; let idx = index">
-      <li>
-        {{idx + 1}} {{task}}
-        <button title="remove" (click)="removeTask(idx)">Usun</button>
-        <button title="done" (click)="doneTask(idx)">Zrobione</button>
-      </li>
-    </ul>
-  </div>
+  <ng-container *ngIf="tasksList.length > 0; else noTasks">
+    <div>
+      <p> Lista zadań [{{tasksList.length}}]: </p>
+      <ul *ngFor="let task of tasksList; let idx = index">
+        <li>
+          {{idx + 1}} {{task}}
+          <button title="done" (click)="doneTask(idx)">Zrobione</button>
+          <button title="remove" (click)="removeTask(idx, tasksList)">X</button>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+  <ng-template #noTasks>
+    <p>
+      Brak zadan do wykonania :-(
+    </p>
+  </ng-template>
 
   <div>
-    <p> Zadania wykonane:</p>
-    <!-- TODO number of done task-->
+    <p> Zadania wykonane [{{doneTaskList.length}}]:</p>
     <ul *ngFor="let task of doneTaskList; let idx = index">
       <li>
         {{task}}
         <button title="resolve" (click)="resolveTask(idx)">Przywróc</button>
+        <button title="done" (click)="removeTask(idx, doneTaskList)">X</button>
       </li>
     </ul>
   </div>
+
 </div>
