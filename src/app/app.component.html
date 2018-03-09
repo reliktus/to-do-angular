@@ -12,33 +12,17 @@
 </div>
 
 <div class="container">
-  <ng-container *ngIf="tasksList.length > 0; else noTasks">
-    <div>
-      <p> Lista zadań [{{tasksList.length}}]: </p>
-      <ul *ngFor="let task of tasksList; let idx = index">
-        <li>
-          {{idx + 1}} {{task}}
-          <button title="done" (click)="doneTask(idx)">Zrobione</button>
-          <button title="remove" (click)="removeTask(idx, tasksList)">X</button>
-        </li>
-      </ul>
-    </div>
-  </ng-container>
-  <ng-template #noTasks>
-    <p>
-      Brak zadan do wykonania :-(
-    </p>
-  </ng-template>
-
   <div>
-    <p> Zadania wykonane [{{doneTaskList.length}}]:</p>
-    <ul *ngFor="let task of doneTaskList; let idx = index">
-      <li>
-        {{task}}
-        <button title="resolve" (click)="resolveTask(idx)">Przywróc</button>
-        <button title="done" (click)="removeTask(idx, doneTaskList)">X</button>
-      </li>
-    </ul>
+    <app-tasks-list [tasksList]="tasksList"
+                    (doneTask)="doneTask($event)"
+                    (removeTask)="removeTask($event, tasksList)">
+    </app-tasks-list>
+  </div>
+  <app-done-task-list [tasksList]="doneTaskList"
+                      (resolveTask)="resolveTask($event)"
+                      (removeTask)="removeTask($event, doneTaskList)">
+  </app-done-task-list>
+  <div>
   </div>
 
 </div>

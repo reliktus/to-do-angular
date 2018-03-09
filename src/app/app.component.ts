@@ -11,10 +11,6 @@ export class AppComponent {
   inputClass = '';
   doneTaskList: Array<string> = [];
 
-  static removeTask(id: number, listType: Array<string>): void {
-    listType.splice(id, 1);
-  }
-
   addTask() {
     const _this = this;
     if (this.newTask !== '') {
@@ -30,11 +26,16 @@ export class AppComponent {
 
   doneTask(id: number): void {
     this.doneTaskList.push(this.tasksList[id]);
-    AppComponent.removeTask(id, this.tasksList);
+    this.tasksList.splice(id, 1);
   }
 
   resolveTask(id: number): void {
     this.tasksList.push(this.doneTaskList[id]);
-    AppComponent.removeTask(id, this.doneTaskList);
+    this.doneTaskList.splice(id, 1);
+  }
+
+  removeTask(id, listType): void {
+    // TODO deal with this static method
+    listType.splice(id, 1);
   }
 }
