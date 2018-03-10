@@ -1,0 +1,8 @@
+<p> Zadania wykonane [{{tasksList.length}}]:</p>
+<ul *ngFor="let task of tasksList; let idx = index">
+  <li>
+    {{task}}
+    <button title="resolve" (click)="resolve(idx)">Przywróc</button>
+    <button title="done" (click)="remove(idx)">X</button>
+  </li>
+</ul>
