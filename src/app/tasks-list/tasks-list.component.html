@@ -1,8 +1,8 @@
 <ng-container *ngIf="tasksList.length > 0; else noTasks">
   <div>
     <p> Lista zadań [{{tasksList.length}}]: </p>
-    <ul *ngFor="let task of tasksList; let idx = index">
-      <li>
+    <ul *ngFor="let task of tasksList; let idx = index; let odd = odd; let even = even">
+      <li [ngClass]="{'li-odd': odd, 'li-even': even}">
         {{idx + 1}} {{task}}
         <button title="done" (click)="done(idx)">Zrobione</button>
         <button title="remove" (click)="remove(idx)">X</button>

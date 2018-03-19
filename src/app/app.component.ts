@@ -11,6 +11,8 @@ export class AppComponent {
   inputClass = '';
   doneTaskList: Array<string> = [];
 
+
+
   addTask() {
     const _this = this;
     if (this.newTask !== '') {

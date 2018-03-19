@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./tasks-list.component.css']
 })
 export class TasksListComponent implements OnInit {
-
+  // liColor = '';
   @Input() tasksList;
 
   @Output() doneTask = new EventEmitter<number>();
@@ -16,7 +16,13 @@ export class TasksListComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
+
+/*  getLiColor(odd: boolean): string {
+    odd ? this.liColor = 'li-odd' : this.liColor = 'li-even';
+    return this.liColor;
+  }*/
 
   done(idx: number) {
     this.doneTask.emit(idx);

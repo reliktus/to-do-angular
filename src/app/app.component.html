@@ -5,7 +5,10 @@
 <div class="container">
   <div>
     <p>
-      <input [ngClass]="inputClass" [(ngModel)]="newTask" title="Dodaj zadanie" placeholder="Podaj nazwę zadania..">
+      <input [ngClass]="inputClass"
+             [(ngModel)]="newTask"
+             title="Dodaj zadanie"
+             placeholder="Podaj nazwę zadania..">
       <button (click)="addTask()">Dodaj zadanie</button>
     </p>
   </div>
